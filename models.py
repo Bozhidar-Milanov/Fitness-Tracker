@@ -1,16 +1,13 @@
 from datetime import date
 from tabulate import tabulate
 
-
 class FitnessTracker:
-    """Клас за проследяване на фитнес активности."""
 
     def __init__(self, potrebitel):
         self.potrebitel = potrebitel
         self.aktivnosti = []
 
     def dobavi_aktivnost(self, vid, minuti, kalorii):
-        """Добавя нова активност с дата, вид, минути и изгорени калории."""
         aktivnost = {
             "data": str(date.today()),
             "vid": vid,
@@ -21,7 +18,6 @@ class FitnessTracker:
         print(f"[+] Добавена активност: {vid} | {minuti} мин | {kalorii} кал")
 
     def pokaji_vsichki(self):
-        """Показва всички активности в таблица."""
         if not self.aktivnosti:
             print("[!] Няма записани активности.")
             return
@@ -29,7 +25,6 @@ class FitnessTracker:
         print(tabulate(self.aktivnosti, headers="keys", tablefmt="rounded_outline"))
 
     def sortiraj_po_kalorii(self, nizhodyashto=True):
-        """Сортира активностите по изгорени калории (низходящо по подразбиране)."""
         sortirani = sorted(self.aktivnosti, key=lambda x: x["kalorii"], reverse=nizhodyashto)
         red = "низходящо" if nizhodyashto else "възходящо"
         print(f"\n--- Сортирани по калории ({red}) ---")
@@ -37,7 +32,6 @@ class FitnessTracker:
         return sortirani
 
     def filtriraj_po_vid(self, vid):
-        """Филтрира активностите по вид (напр. 'Бягане')."""
         rezultat = [a for a in self.aktivnosti if a["vid"].lower() == vid.lower()]
         if not rezultat:
             print(f"[!] Няма активности от вид '{vid}'.")
@@ -47,7 +41,6 @@ class FitnessTracker:
         return rezultat
 
     def oboshtenie(self):
-        """Показва обобщена статистика — калории, минути и препоръка."""
         if not self.aktivnosti:
             print("[!] Няма данни за обобщение.")
             return
