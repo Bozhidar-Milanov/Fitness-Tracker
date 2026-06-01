@@ -1,62 +1,79 @@
 ====================================================
-  FITNESS TRACKER — Python Project
+  ФИТНЕС ТРЕКЕР — Python проект
 ====================================================
 
-OPISANIE:
+ОПИСАНИЕ:
 ---------
-Tova e konzolen fitness tracker, koito pozvolqva na
-potrebitelq da zapisva sportni aktivnosti, da gi
-sortiira po kalorii, da gi filtriira po vid i da
-viji obshotena statistika.
+Конзолна програма за проследяване на спортни
+активности. Позволява добавяне, сортиране,
+филтриране и статистика на тренировки.
 
-STRUKTURA NA PROEKTA:
+СТРУКТУРА НА ПРОЕКТА:
 ---------------------
-  models.py        — Sdrjha klasa FitnessTracker s metodite
-  main.py          — Stvoryava obekt i demonstrira funktsionalnostta
-  requirements.txt — Izpolzvani biblioteki
-  readme.txt       — Tazi instruktsiq
+  models.py        — Съдържа класа FitnessTracker
+  main.py          — Стартира програмата и показва демо
+  requirements.txt — Външни библиотеки за инсталация
+  readme.txt       — Това описание
 
-KLАС FitnessTracker (models.py):
----------------------------------
-  __init__(potrebitel)
-      Inicializira trakera s ime na potrebitel i prazen
-      spisak s aktivnosti.
-
-  dobavi_aktivnost(vid, minuti, kalorii)
-      Dobavya nova aktivnost s tekushta data, vid,
-      prodaljitelnost v minuti i izgoryani kalorii.
-
-  pokaji_vsichki()
-      Pokazva vsichki zapisani aktivnosti v tablichen vid.
-
-  sortiraj_po_kalorii(nizhodyashto=True)
-      Sortira aktivnostite po izgoryani kalorii.
-      Po podrazbirana naredba e nizhodyashta (naj-visoki napred).
-      Podaj nizhodyashto=False za vazhodyashto naredjane.
-
-  filtriraj_po_vid(vid)
-      Vrashta i pokazva samo aktivnostite ot dadenia vid
-      (npr. "Byagane", "Kolelo", "Yoga").
-
-  oboshtenie()
-      Pressmqta i pokazva obshto minuti, obshto kalorii,
-      srednite kalorii na sesiq i dava preporaka.
-
-IZPOLZVANI BIBLIOTEKI:
------------------------
-  tabulate — za krasivo formatirana tablitsa v terminala
-             (https://pypi.org/project/tabulate/)
-
-KAK DA STАРТИРАТЕ:
-------------------
-  1. Инсталирайте зависимостите:
+КАК СЕ СТАРТИРА:
+----------------
+  1. Инсталира се библиотеката:
        pip install -r requirements.txt
 
-  2. Стартирайте програмата:
+  2. Стартира се програмата:
        python main.py
 
-IZISKVANA VERSIQ NA PYTHON:
+КАК РАБОТИ ПРОГРАМАТА:
+-----------------------
+  1. В main.py се създава обект от класа FitnessTracker
+     с името на потребителя:
+       tracker = FitnessTracker("Божидар Миланов")
+
+  2. Дефиниран е списък с активности (вид, минути,
+     калории) и чрез цикъл всяка се добавя в обекта.
+
+  3. Програмата изпълнява следните стъпки:
+
+     [1] Добавяне на активности
+         — добавят се 8 тренировки с вид, минути и калории.
+         — датата се записва автоматично.
+
+     [2] Показване на всички активности
+         — извежда се таблица с всички записани тренировки.
+
+     [3] Сортиране по калории (низходящо)
+         — активностите се наредждат от най-много
+           към най-малко изгорени калории.
+
+     [4] Сортиране по калории (възходящо)
+         — активностите се наредждат от най-малко
+           към най-много изгорени калории.
+
+     [5] Филтриране по вид
+         — показват се само активностите от даден вид.
+         — ако няма такъв вид, излиза съобщение.
+
+     [6] Активност с най-много калории
+         — чрез цикъл се намира тренировката с
+           най-висок разход на калории.
+
+     [7] Активности над 400 калории
+         — филтрират се само тренировките с
+           над 400 изгорени калории.
+
+     [8] Обобщение и статистика
+         — показват се общо минути, общо калории,
+           средно калории на сесия и препоръка.
+
+ИЗПОЛЗВАНИ БИБЛИОТЕКИ:
+-----------------------
+  tabulate==0.9.0
+      Използва се за извеждане на активностите
+      като форматирана таблица в терминала.
+      Инсталация: pip install tabulate
+
+ИЗИСКВАНА ВЕРСИЯ НА PYTHON:
 ----------------------------
-  Python 3.8 ili po-nova versiq
+  Python 3.8 или по-нова версия
 
 ====================================================
